@@ -50,21 +50,21 @@ public class RoomsController {
 	}
 	
 	@RequestMapping("/rooms/detail")
-	public String detail(@RequestParam String id, Model model) {
+	public String detail(@RequestParam Long id, Model model) {
 		Room room = repo.findById(id).get();
 		model.addAttribute("room", room);
 		return "detail";
 	}
 	
 	@RequestMapping("/rooms/edit")
-	public String edit(@RequestParam String id, Model model) {
+	public String edit(@RequestParam Long id, Model model) {
 		Room room = repo.findById(id).get();
 		model.addAttribute("room", room);
 		return "edit";
 	}
 	
 	@PostMapping("/rooms/edit")
-	public String save(@RequestParam String id, Room room) {
+	public String save(@RequestParam Long id, Room room) {
 		repo.save(room);
 		return "redirect:/rooms/detail?id=" + id;
 	}
@@ -81,7 +81,7 @@ public class RoomsController {
 	}
 	
 	@RequestMapping("/rooms/delete")
-	public String remove(@RequestParam String id) {
+	public String remove(@RequestParam Long id) {
 		repo.deleteById(id);
 		return "redirect:/rooms";
 	}

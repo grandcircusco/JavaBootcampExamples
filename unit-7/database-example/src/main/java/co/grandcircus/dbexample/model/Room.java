@@ -1,13 +1,15 @@
 package co.grandcircus.dbexample.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Document("rooms")
+@Entity
+@Table(name = "rooms")
 public class Room {
 
 	@Id
-	private String id;
+	private Long id;
 	private String name;
 	private Integer maxCapacity;
 	private Boolean available;
@@ -15,7 +17,7 @@ public class Room {
 	public Room() {
 	}
 
-	public Room(String id, String name, Integer capacity, Boolean available) {
+	public Room(Long id, String name, Integer capacity, Boolean available) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -23,11 +25,11 @@ public class Room {
 		this.available = available;
 	}
 
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

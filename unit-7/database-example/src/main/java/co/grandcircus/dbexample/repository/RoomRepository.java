@@ -2,11 +2,11 @@ package co.grandcircus.dbexample.repository;
 
 import java.util.List;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import co.grandcircus.dbexample.model.Room;
 
-public interface RoomRepository extends MongoRepository<Room, String> {
+public interface RoomRepository extends JpaRepository<Room, Long> {
 
 	List<Room> findByAvailableIsTrueAndMaxCapacityGreaterThanEqual(
 			int neededCapacity);
