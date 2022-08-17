@@ -24,5 +24,8 @@ export class AddBookFormComponent implements OnInit {
       pages: parseInt(this.pages),
       lentOut: false,
     });
+    this.title = '';
+    this.author = '';
+    this.pages = '';
   };
 }
