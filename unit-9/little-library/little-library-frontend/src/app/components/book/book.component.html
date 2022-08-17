@@ -1,0 +1,11 @@
+<li
+  class="book"
+  [ngClass]="{ 'checked-out': book?.lentOut, available: !book?.lentOut }"
+>
+  <p>"{{ book?.title }}" by: {{ book?.author }}</p>
+  <p>({{ book?.pages }} pages)</p>
+  <button (click)="updateBook()">
+    {{ !book?.lentOut ? "Checkout" : "Return" }}
+  </button>
+  <button (click)="remove()">Remove from library</button>
+</li>
