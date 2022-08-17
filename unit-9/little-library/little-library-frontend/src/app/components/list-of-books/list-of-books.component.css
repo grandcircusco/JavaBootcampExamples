@@ -1,0 +1,10 @@
+.library {
+  padding: 30px;
+  margin: 0 30px;
+  background-color: darkslategray;
+}
+
+.library h2 {
+  margin: 0;
+  color: white;
+}
