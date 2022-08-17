@@ -20,7 +20,7 @@ export class LittleLibraryService {
   ): Observable<Book[]> => {
     const params: any = {};
     if (query) {
-      params.query = query;
+      params.q = query;
     }
     if (lentOut !== null) {
       params.lentOut = lentOut;

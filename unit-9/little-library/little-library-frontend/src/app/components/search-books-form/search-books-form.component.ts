@@ -11,7 +11,7 @@ export class SearchBooksFormComponent implements OnInit {
   @Output() setSearchStatus = new EventEmitter<boolean>();
 
   query: string = '';
-  lentOut: string = '';
+  lentOut: string = 'null';
 
   constructor() {}
 
@@ -26,6 +26,6 @@ export class SearchBooksFormComponent implements OnInit {
 
   clear = (): void => {
     this.query = '';
-    this.lentOut = '';
+    this.lentOut = 'null';
   };
 }
