@@ -20,6 +20,7 @@ export class ListOfBooksComponent implements OnInit {
   setBooks = (): void => {
     this.libraryService.getBooks().subscribe((data: Book[]) => {
       this.books = data;
+      this.searchStatus = false;
     });
   };
 
@@ -28,6 +29,7 @@ export class ListOfBooksComponent implements OnInit {
       .searchBooks(searchParams.keyword, searchParams.holdStatus)
       .subscribe((data: Book[]) => {
         this.books = data;
+        this.searchStatus = true;
       });
   };
 
@@ -45,12 +47,5 @@ export class ListOfBooksComponent implements OnInit {
 
   removeBookFromLibrary = (id: number): void => {
     this.libraryService.deleteBook(id).subscribe(() => this.setBooks());
-  };
-
-  setSearchStatus = (status: boolean): void => {
-    this.searchStatus = status;
-    if (!status) {
-      this.setBooks();
-    }
   };
 }

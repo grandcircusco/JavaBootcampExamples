@@ -1,6 +1,5 @@
 <app-search-books-form
   (searchLibrary)="searchLibrary($event)"
-  (setSearchStatus)="setSearchStatus($event)"
 ></app-search-books-form>
 <app-add-book-form
   (addBookToLibrary)="addBookToLibrary($event)"
@@ -8,9 +7,7 @@
 <ul class="library">
   <h2 *ngIf="!searchStatus">Books:</h2>
   <h2 *ngIf="searchStatus">Search Results:</h2>
-  <button *ngIf="searchStatus" (click)="setSearchStatus(false)">
-    clear results
-  </button>
+  <button *ngIf="searchStatus" (click)="setBooks()">clear results</button>
   <app-book
     *ngFor="let book of books; index as i"
     [book]="book"

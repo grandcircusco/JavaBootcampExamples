@@ -8,7 +8,6 @@ import SearchParams from 'src/app/interfaces/SearchParams';
 })
 export class SearchBooksFormComponent implements OnInit {
   @Output() searchLibrary = new EventEmitter<SearchParams>();
-  @Output() setSearchStatus = new EventEmitter<boolean>();
 
   query: string = '';
   lentOut: string = 'null';
@@ -21,7 +20,6 @@ export class SearchBooksFormComponent implements OnInit {
     let status: boolean | null =
       this.lentOut === 'true' ? true : this.lentOut === 'false' ? false : null;
     this.searchLibrary.emit({ keyword: this.query, holdStatus: status });
-    this.setSearchStatus.emit(true);
   };
 
   clear = (): void => {
