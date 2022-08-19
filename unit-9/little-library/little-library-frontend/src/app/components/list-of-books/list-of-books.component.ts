@@ -1,31 +1,45 @@
-import { Component, OnInit } from '@angular/core';
-import Book from 'src/app/interfaces/Book';
-import SearchParams from 'src/app/interfaces/SearchParams';
-import { LittleLibraryService } from 'src/app/little-library.service';
+import { Component, OnInit } from "@angular/core";
+import Book from "src/app/interfaces/Book";
+import SearchParams from "src/app/interfaces/SearchParams";
+import { BookshelfService } from "src/app/bookshelf.service";
 
 @Component({
-  selector: 'app-list-of-books',
-  templateUrl: './list-of-books.component.html',
-  styleUrls: ['./list-of-books.component.css'],
+  selector: "app-list-of-books",
+  templateUrl: "./list-of-books.component.html",
+  styleUrls: ["./list-of-books.component.css"],
 })
 export class ListOfBooksComponent implements OnInit {
   books: Book[] = [];
   searchStatus: boolean = false;
-  constructor(private libraryService: LittleLibraryService) {}
+  testBook1: Book = {
+    id: 100,
+    title: "hi",
+    author: "me",
+    lentOut: true,
+    pages: 100,
+  };
+  testBook2: Book = {
+    id: 101,
+    title: "hiii",
+    author: "me",
+    lentOut: false,
+    pages: 100,
+  };
+  constructor(private bookshelfService: BookshelfService) {}
 
   ngOnInit(): void {
     this.setBooks();
   }
 
   setBooks = (): void => {
-    this.libraryService.getBooks().subscribe((data: Book[]) => {
+    this.bookshelfService.getBooks().subscribe((data: Book[]) => {
       this.books = data;
       this.searchStatus = false;
     });
   };
 
-  searchLibrary = (searchParams: SearchParams): void => {
-    this.libraryService
+  searchBookshelf = (searchParams: SearchParams): void => {
+    this.bookshelfService
       .searchBooks(searchParams.keyword, searchParams.holdStatus)
       .subscribe((data: Book[]) => {
         this.books = data;
@@ -36,16 +50,16 @@ export class ListOfBooksComponent implements OnInit {
   updateLentOut = (book: Book): void => {
     const updatedBook = { ...book };
     updatedBook.lentOut = !book.lentOut;
-    this.libraryService
+    this.bookshelfService
       .updateBook(book.id!, updatedBook)
       .subscribe(() => this.setBooks());
   };
 
-  addBookToLibrary = (book: Book): void => {
-    this.libraryService.addBook(book).subscribe(() => this.setBooks());
+  addBookToShelf = (book: Book): void => {
+    this.bookshelfService.addBook(book).subscribe(() => this.setBooks());
   };
 
-  removeBookFromLibrary = (id: number): void => {
-    this.libraryService.deleteBook(id).subscribe(() => this.setBooks());
+  removeBookFromShelf = (id: number): void => {
+    this.bookshelfService.deleteBook(id).subscribe(() => this.setBooks());
   };
 }

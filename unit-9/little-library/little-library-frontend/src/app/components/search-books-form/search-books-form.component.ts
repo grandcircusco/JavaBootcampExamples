@@ -1,16 +1,16 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import SearchParams from 'src/app/interfaces/SearchParams';
+import { Component, EventEmitter, OnInit, Output } from "@angular/core";
+import SearchParams from "src/app/interfaces/SearchParams";
 
 @Component({
-  selector: 'app-search-books-form',
-  templateUrl: './search-books-form.component.html',
-  styleUrls: ['./search-books-form.component.css'],
+  selector: "app-search-books-form",
+  templateUrl: "./search-books-form.component.html",
+  styleUrls: ["./search-books-form.component.css"],
 })
 export class SearchBooksFormComponent implements OnInit {
-  @Output() searchLibrary = new EventEmitter<SearchParams>();
+  @Output() searchBookshelf = new EventEmitter<SearchParams>();
 
-  query: string = '';
-  lentOut: string = 'null';
+  query: string = "";
+  lentOut: string = "null";
 
   constructor() {}
 
@@ -18,12 +18,12 @@ export class SearchBooksFormComponent implements OnInit {
 
   search = (): void => {
     let status: boolean | null =
-      this.lentOut === 'true' ? true : this.lentOut === 'false' ? false : null;
-    this.searchLibrary.emit({ keyword: this.query, holdStatus: status });
+      this.lentOut === "true" ? true : this.lentOut === "false" ? false : null;
+    this.searchBookshelf.emit({ keyword: this.query, holdStatus: status });
   };
 
   clear = (): void => {
-    this.query = '';
-    this.lentOut = 'null';
+    this.query = "";
+    this.lentOut = "null";
   };
 }

@@ -13,3 +13,9 @@ form {
   display: inline-block;
   padding: 0 0 30px 30px;
 }
+
+button {
+  margin: 10px 10px 0 0;
+  border: 1px solid #00072d;
+  padding: 5px 10px;
+}

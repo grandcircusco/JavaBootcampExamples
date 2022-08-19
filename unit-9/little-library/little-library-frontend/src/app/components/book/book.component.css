@@ -1,17 +1,21 @@
 .book {
   list-style: none;
-  border: 1px solid black;
+  border: 1px solid #00072d;
   padding: 10px;
 }
 
 .checked-out {
-  background-color: rgb(96, 114, 114);
+  background-color: #298ed1;
 }
 
 .available {
-  background-color: lightgray;
+  background-color: #cbdce4;
 }
 
-.book button {
-  margin: 10px 10px 0 0;
+.lent-out-message {
+  background-color: #00072d;
+  padding: 5px;
+  border-radius: 10px;
+  color: #cbdce4;
+  margin-top: 5px;
 }
