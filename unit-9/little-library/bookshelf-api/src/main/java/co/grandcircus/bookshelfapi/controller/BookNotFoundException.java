@@ -1,4 +1,4 @@
-package co.grandcircus.littlelibraryapi.controller;
+package co.grandcircus.bookshelfapi.controller;
 public class BookNotFoundException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;

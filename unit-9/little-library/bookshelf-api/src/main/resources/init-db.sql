@@ -1,7 +1,7 @@
 -- Copy-paste and run this code in MySQL Workbench to set up the database
 -- table and sample data for this application.
 
-CREATE TABLE `little_library_book` (
+CREATE TABLE `bookshelf_book` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `title` varchar(80) DEFAULT NULL,
   `author` varchar(80) DEFAULT NULL,
@@ -10,7 +10,8 @@ CREATE TABLE `little_library_book` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-INSERT INTO little_library_book (title, author, pages, lent_out) VALUES
+
+INSERT INTO bookshelf_book (title, author, pages, lent_out) VALUES
 ('Pride and Prejudice', 'Jane Austen', 432, false),
 ('To Kill a Mockingbird', 'Harper Lee', 281, true),
 ('One Hundred Years of Solitude', 'Gabriel García Márquez', 448, false),

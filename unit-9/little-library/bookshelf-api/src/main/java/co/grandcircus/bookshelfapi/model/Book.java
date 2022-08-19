@@ -1,4 +1,4 @@
-package co.grandcircus.littlelibraryapi.model;
+package co.grandcircus.bookshelfapi.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="little_library_book")
+@Table(name="bookshelf_book")
 public class Book {
 
 	@Id

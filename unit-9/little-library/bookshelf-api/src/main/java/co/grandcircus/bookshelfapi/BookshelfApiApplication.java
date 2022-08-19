@@ -1,13 +1,13 @@
-package co.grandcircus.littlelibraryapi;
+package co.grandcircus.bookshelfapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class LittleLibraryApiApplication {
+public class BookshelfApiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(LittleLibraryApiApplication.class, args);
+		SpringApplication.run(BookshelfApiApplication.class, args);
 	}
 
 }

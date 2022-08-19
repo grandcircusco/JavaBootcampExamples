@@ -1,4 +1,4 @@
-package co.grandcircus.littlelibraryapi.controller;
+package co.grandcircus.bookshelfapi.controller;
 
 import java.util.List;
 
@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import co.grandcircus.littlelibraryapi.model.Book;
-import co.grandcircus.littlelibraryapi.repository.BookRepository;
+import co.grandcircus.bookshelfapi.model.Book;
+import co.grandcircus.bookshelfapi.repository.BookRepository;
 
 @RestController
 @CrossOrigin // Allow any website to access this API
