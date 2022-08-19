@@ -2,22 +2,30 @@ package co.grandcircus.AvengersApi;
 
 import java.util.List;
 
-import org.springframework.data.annotation.*;
-import org.springframework.data.mongodb.core.mapping.Document;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Document("characters")
+
+
+@Entity
+@Table(name = "characters")
 public class AvCharacter {
 	@Id
-	public String id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	public Long id;
 	
 	private String name;
 	private Integer strength;
 	private Boolean good;
-	private List<String> skills;
+	private String skills;
 	
 	public AvCharacter() {}
 	
-	public AvCharacter(String name, Integer strength, Boolean good, List<String> skills) {
+	public AvCharacter(String name, Integer strength, Boolean good, String skills) {
 		this.name = name;
 		this.strength = strength;
 		this.good = good;
@@ -25,11 +33,11 @@ public class AvCharacter {
 	}
 	
 	// Getters and Setters
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	
@@ -57,11 +65,11 @@ public class AvCharacter {
 		this.good = good;
 	}
 	
-	public List<String> getSkills() {
+	public String getSkills() {
 		return skills;
 	}
 
-	public void setSkills(List<String> skills) {
+	public void setSkills(String skills) {
 		this.skills = skills;
 	}
 

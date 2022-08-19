@@ -2,8 +2,8 @@ package co.grandcircus.AvengersApi;
 
 import java.util.List;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CharacterRepository extends MongoRepository<AvCharacter, String> {
+public interface CharacterRepository extends JpaRepository<AvCharacter, Long> {
 	List<AvCharacter> findBySkills(String skill);
 }
