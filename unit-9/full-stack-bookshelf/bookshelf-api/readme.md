@@ -7,7 +7,7 @@ The Spring Boot API for this lab can be conveniently started from the command li
 3. (on Mac) run `./gradlew bootRun`
 4. When you're finished, stop the API using the keyboard combination: CTRL+C.
 
-To start with in-memory database, run `./gradlew bootRun --args='--spring.profiles.active=dev'`
+To start with in-memory database, run `./gradlew bootRun --args='--spring.profiles.active=h2'`
 
 Alternatively, you can import the `bookshelf-api` folder as a Gradle project in Eclipse and run it as you typically do by running `BookshelfApiApplication.java`.
 
