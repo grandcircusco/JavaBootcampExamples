@@ -1,15 +1,15 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import Book from 'src/app/interfaces/Book';
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import Book from "src/app/interfaces/Book";
 
 @Component({
-  selector: 'app-book',
-  templateUrl: './book.component.html',
-  styleUrls: ['./book.component.css'],
+  selector: "app-book",
+  templateUrl: "./book.component.html",
+  styleUrls: ["./book.component.css"],
 })
 export class BookComponent implements OnInit {
   @Input() book: Book | undefined;
   @Output() update = new EventEmitter<Book>();
-  @Output() removeBookFromLibrary = new EventEmitter<number>();
+  @Output() removeBookFromShelf = new EventEmitter<number>();
 
   constructor() {}
 
@@ -20,6 +20,6 @@ export class BookComponent implements OnInit {
   };
 
   remove = (): void => {
-    this.removeBookFromLibrary.emit(this.book?.id);
+    this.removeBookFromShelf.emit(this.book?.id);
   };
 }

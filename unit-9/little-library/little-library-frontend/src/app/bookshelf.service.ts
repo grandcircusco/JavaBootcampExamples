@@ -1,13 +1,13 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import Book from './interfaces/Book';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
+import Book from "./interfaces/Book";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
-export class LittleLibraryService {
-  baseURL: string = 'http://localhost:8080/books';
+export class BookshelfService {
+  baseURL: string = "http://localhost:8080/books";
 
   constructor(private http: HttpClient) {}
 

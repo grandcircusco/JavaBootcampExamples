@@ -1,17 +1,19 @@
 <app-search-books-form
-  (searchLibrary)="searchLibrary($event)"
+  (searchBookshelf)="searchBookshelf($event)"
 ></app-search-books-form>
 <app-add-book-form
-  (addBookToLibrary)="addBookToLibrary($event)"
+  (addBookToShelf)="addBookToShelf($event)"
 ></app-add-book-form>
 <ul class="library">
   <h2 *ngIf="!searchStatus">Books:</h2>
   <h2 *ngIf="searchStatus">Search Results:</h2>
   <button *ngIf="searchStatus" (click)="setBooks()">clear results</button>
+  <app-book [book]="testBook1"></app-book>
+  <app-book [book]="testBook2"></app-book>
   <app-book
     *ngFor="let book of books; index as i"
     [book]="book"
     (update)="updateLentOut($event)"
-    (removeBookFromLibrary)="removeBookFromLibrary($event)"
+    (removeBookFromShelf)="removeBookFromShelf($event)"
   ></app-book>
 </ul>
