@@ -45,7 +45,7 @@ public class CharacterController {
 	@GetMapping("/character")
 	public List<AvCharacter> readAll(@RequestParam(required=false) String skill) {
 		if (skill != null) {
-			return ch_repo.findBySkills(skill);
+			return ch_repo.findBySkill(skill);
 		} else {
 			return ch_repo.findAll();
 		}

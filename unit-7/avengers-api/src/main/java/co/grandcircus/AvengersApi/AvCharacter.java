@@ -21,15 +21,15 @@ public class AvCharacter {
 	private String name;
 	private Integer strength;
 	private Boolean good;
-	private String skills;
+	private String skill;
 	
 	public AvCharacter() {}
 	
-	public AvCharacter(String name, Integer strength, Boolean good, String skills) {
+	public AvCharacter(String name, Integer strength, Boolean good, String skill) {
 		this.name = name;
 		this.strength = strength;
 		this.good = good;
-		this.skills = skills;
+		this.skill= skill;
 	}
 	
 	// Getters and Setters
@@ -66,11 +66,11 @@ public class AvCharacter {
 	}
 	
 	public String getSkills() {
-		return skills;
+		return skill;
 	}
 
-	public void setSkills(String skills) {
-		this.skills = skills;
+	public void setSkills(String skill) {
+		this.skill = skill;
 	}
 
 }
