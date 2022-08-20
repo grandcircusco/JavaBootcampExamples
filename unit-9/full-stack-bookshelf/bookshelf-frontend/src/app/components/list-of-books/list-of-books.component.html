@@ -1,17 +1,22 @@
 <app-search-books-form
-  (searchBookshelf)="searchBookshelf($event)"
+  (searchBookshelf)="setFilters($event)"
 ></app-search-books-form>
+
 <app-add-book-form
   (addBookToShelf)="addBookToShelf($event)"
 ></app-add-book-form>
-<ul class="library">
-  <h2 *ngIf="!searchStatus">Books:</h2>
-  <h2 *ngIf="searchStatus">Search Results:</h2>
-  <button *ngIf="searchStatus" (click)="setBooks()">clear results</button>
-  <app-book
-    *ngFor="let book of books; index as i"
-    [book]="book"
-    (update)="updateLentOut($event)"
-    (removeBookFromShelf)="removeBookFromShelf($event)"
-  ></app-book>
-</ul>
+
+<div class="library">
+  <h2 *ngIf="!hasFilters()">Books:</h2>
+  <h2 *ngIf="hasFilters()">Search Results:</h2>
+  <button *ngIf="hasFilters()" (click)="clearFilters()">Clear Filters</button>
+
+  <ul>
+    <app-book
+      *ngFor="let book of books; index as i"
+      [book]="book"
+      (toggleLentOut)="updateLentOut($event)"
+      (removeBookFromShelf)="removeBookFromShelf($event)"
+    ></app-book>
+  </ul>
+</div>

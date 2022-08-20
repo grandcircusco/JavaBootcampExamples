@@ -17,9 +17,17 @@ export class SearchBooksFormComponent implements OnInit {
   ngOnInit(): void {}
 
   search = (): void => {
-    let status: boolean | null =
-      this.lentOut === "true" ? true : this.lentOut === "false" ? false : null;
-    this.searchBookshelf.emit({ keyword: this.query, holdStatus: status });
+    // lentOut is a string and we have to convert it to boolean | null
+    let status: boolean | null;
+    if (this.lentOut === "true") {
+      status = true;
+    } else if (this.lentOut === "false") {
+      status = false;
+    } else {
+      status = null;
+    }
+
+    this.searchBookshelf.emit({ query: this.query, lentOut: status });
   };
 
   clear = (): void => {

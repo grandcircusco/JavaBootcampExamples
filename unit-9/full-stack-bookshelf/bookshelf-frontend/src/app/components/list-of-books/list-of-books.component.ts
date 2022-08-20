@@ -10,42 +10,56 @@ import { BookshelfService } from "src/app/bookshelf.service";
 })
 export class ListOfBooksComponent implements OnInit {
   books: Book[] = [];
-  searchStatus: boolean = false;
+  filters: SearchParams = { query: "", lentOut: null}
   constructor(private bookshelfService: BookshelfService) {}
 
   ngOnInit(): void {
-    this.setBooks();
+    this.loadBooks();
   }
 
-  setBooks = (): void => {
-    this.bookshelfService.getBooks().subscribe((data: Book[]) => {
-      this.books = data;
-      this.searchStatus = false;
-    });
-  };
-
-  searchBookshelf = (searchParams: SearchParams): void => {
-    this.bookshelfService
-      .searchBooks(searchParams.keyword, searchParams.holdStatus)
+  loadBooks(): void {
+    if (this.hasFilters()) {
+      this.bookshelfService
+      .searchBooks(this.filters.query, this.filters.lentOut)
       .subscribe((data: Book[]) => {
         this.books = data;
-        this.searchStatus = true;
       });
+    } else {
+      this.bookshelfService.getAllBooks().subscribe((data: Book[]) => {
+        this.books = data;
+      });
+    }
   };
 
-  updateLentOut = (book: Book): void => {
+  hasFilters(): boolean {
+    return this.filters.query !== "" || this.filters.lentOut !== null;
+  }
+
+  setFilters(params: SearchParams) {
+    this.filters = params;
+    this.loadBooks();
+  }
+
+  clearFilters(): void {
+    this.setFilters({
+      query: "",
+      lentOut: null
+    });
+  }
+
+  updateLentOut(book: Book): void {
     const updatedBook = { ...book };
     updatedBook.lentOut = !book.lentOut;
     this.bookshelfService
       .updateBook(book.id!, updatedBook)
-      .subscribe(() => this.setBooks());
+      .subscribe(() => this.loadBooks());
   };
 
-  addBookToShelf = (book: Book): void => {
-    this.bookshelfService.addBook(book).subscribe(() => this.setBooks());
+  addBookToShelf(book: Book): void {
+    this.bookshelfService.addBook(book).subscribe(() => this.loadBooks());
   };
 
-  removeBookFromShelf = (id: number): void => {
-    this.bookshelfService.deleteBook(id).subscribe(() => this.setBooks());
+  removeBookFromShelf(id: number): void {
+    this.bookshelfService.deleteBook(id).subscribe(() => this.loadBooks());
   };
 }

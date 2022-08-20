@@ -1,4 +1,4 @@
 export default interface SearchParams {
-  keyword: string;
-  holdStatus: boolean | null;
+  query: string;
+  lentOut: boolean | null;
 }

@@ -8,7 +8,7 @@ import Book from "src/app/interfaces/Book";
 })
 export class BookComponent implements OnInit {
   @Input() book: Book | undefined;
-  @Output() update = new EventEmitter<Book>();
+  @Output() toggleLentOut = new EventEmitter<Book>();
   @Output() removeBookFromShelf = new EventEmitter<number>();
 
   constructor() {}
@@ -16,7 +16,7 @@ export class BookComponent implements OnInit {
   ngOnInit(): void {}
 
   updateBook = (): void => {
-    this.update.emit(this.book);
+    this.toggleLentOut.emit(this.book);
   };
 
   remove = (): void => {
