@@ -1,4 +1,4 @@
-package co.grandcircus.AvengersApi;
+package co.grandcircus.aa;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
