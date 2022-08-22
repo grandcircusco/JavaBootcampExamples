@@ -2,7 +2,7 @@ package co.grandcircus.bookshelfapi.controller;
 
 import java.util.List;
 import java.util.Map;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,7 +32,7 @@ public class BookApiController {
 
 	@RequestMapping("/")
 	public Map<String, Object> home() {
-		Map<String, Object> result = new HashMap<>();
+		Map<String, Object> result = new LinkedHashMap<>();
 		result.put("status", "OK");
 		result.put("collections", new String[] { "/books" });
 		return result;
