@@ -1,4 +1,4 @@
-package co.grandcircus.aa;
+package co.grandcircus.avengersapi.model;
 
 import java.util.List;
 

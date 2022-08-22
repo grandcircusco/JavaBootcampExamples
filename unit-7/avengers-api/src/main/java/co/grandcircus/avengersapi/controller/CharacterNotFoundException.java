@@ -1,4 +1,4 @@
-package co.grandcircus.aa;
+package co.grandcircus.avengersapi.controller;
 
 public class CharacterNotFoundException extends RuntimeException {
 

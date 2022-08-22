@@ -1,8 +1,12 @@
-package co.grandcircus.aa;
+package co.grandcircus.avengersapi.controller;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import co.grandcircus.avengersapi.model.AvCharacter;
+import co.grandcircus.avengersapi.repository.CharacterRepository;
+
 import org.springframework.http.HttpStatus;
 
 @RestController
@@ -42,7 +46,7 @@ public class CharacterController {
 	}
 	
 	// C(R)UD -- Read All
-	@GetMapping("/character")
+	@GetMapping("/characters")
 	public List<AvCharacter> readAll(@RequestParam(required=false) String skill) {
 		if (skill != null) {
 			return ch_repo.findBySkill(skill);
@@ -52,13 +56,13 @@ public class CharacterController {
 	}
 	
 	// C(R)UD -- Read One
-	@GetMapping("/character/{id}")
+	@GetMapping("/characters/{id}")
 	public AvCharacter readOne(@PathVariable("id") Long id) {
 		return ch_repo.findById(id).orElseThrow(() -> new CharacterNotFoundException(id) );
 	}
 	
 	// (C)RUD -- Create
-	@PostMapping("/character")
+	@PostMapping("/characters")
 	@ResponseStatus(HttpStatus.CREATED)
 	public AvCharacter create(@RequestBody AvCharacter avchar) {
 		ch_repo.save(avchar);
@@ -66,14 +70,14 @@ public class CharacterController {
 	}
 	
 	// CRU(D) -- Delete
-	@DeleteMapping("/character/{id}")
+	@DeleteMapping("/characters/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable("id") Long id) {
 		ch_repo.deleteById(id);
 	}
 	
 	// CR(U)D -- Update
-	@PutMapping("/character/{id}")
+	@PutMapping("/characters/{id}")
 	public AvCharacter update(@PathVariable("id") Long id,
 			@RequestBody AvCharacter avchar) {
 		avchar.setId(id);

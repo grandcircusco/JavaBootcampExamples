@@ -1,4 +1,4 @@
-package co.grandcircus.AvengersApi;
+package co.grandcircus.aa;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

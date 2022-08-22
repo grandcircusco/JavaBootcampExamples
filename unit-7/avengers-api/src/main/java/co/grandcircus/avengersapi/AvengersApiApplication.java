@@ -1,4 +1,4 @@
-package co.grandcircus.aa;
+package co.grandcircus.avengersapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
