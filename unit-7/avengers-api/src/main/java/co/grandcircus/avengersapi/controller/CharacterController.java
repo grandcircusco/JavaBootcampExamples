@@ -1,6 +1,9 @@
 package co.grandcircus.avengersapi.controller;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +17,14 @@ public class CharacterController {
 	@Autowired
 	private CharacterRepository ch_repo;
 	
+	// Status response for root URL path
+	@RequestMapping("/")
+	public Map<String, Object> home() {
+		Map<String, Object> result = new LinkedHashMap<>();
+		result.put("status", "OK");
+		result.put("collections", new String[] { "/characters" });
+		return result;
+	}	
 	
 	@GetMapping("/reset")
 	public String reset() {
