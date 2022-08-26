@@ -1,23 +1,25 @@
+# Bookshelf API
+This code is part of the [full stack bookshelf example](https://github.com/grandcircusco/JavaBootcampExamples/tree/main/unit-9/full-stack-bookshelf).
+
 ## Start the API
+First, clone the repository to your computer if you have not already:
 
-The Spring Boot API for this lab can be conveniently started from the command line.
+`git clone https://github.com/grandcircusco/JavaBootcampExamples.git`
 
-1. cd into `bookshelf-api`
-2. (on Windows) run `gradlew.bat bootRun` 
-3. (on Mac) run `./gradlew bootRun`
-4. When you're finished, stop the API using the keyboard combination: CTRL+C.
+You may start this Spring Boot API from the command line or import and run it in Eclipse. From the command line you will *not* need to set up a MySQL Database because it uses an in-memory H2 database that comes pre-loaded with sample data.
 
-To start with in-memory database, run `./gradlew bootRun --args='--spring.profiles.active=h2'`
+To start the API from the command line:
 
-Alternatively, you can import the `bookshelf-api` folder as a Gradle project in Eclipse and run it as you typically do by running `BookshelfApiApplication.java`.
+1. CD into the `bookshelf-api` directory.
+2. Run: `./gradlew bootRun --args='--spring.profiles.active=h2'`
 
-NOTE: This API stores its data in an in-memory database called H2, not in MySQL like most of our own projects. This saves some setup, but it means that the data will reset when you restart the API.
+Or to import and run it in Eclipse:
 
-## Create the Angular App
-
-Create your Angular app here in the main folder. Name it bookshelf-frontend.
-
-```bash
-ng new bookshelf-frontend
-cd bookshelf-frontend
-```
+1. In Eclipse, select File > Import...
+2. Select "Existing Gradle Project"
+3. For the project root directory select this folder within the cloned repo. (full-stack-bookshelf/bookshelf-api)
+4. Finish the import.
+5. Add `src/main/resources/config/application.properties` and add connection info for your own MySQL schema.
+6. You should initialize your database with some sample data found in `src/main/resources/init-db.sql`. Copy this code into MySQL Workbench and run it. This will create the table and starting data.
+7. Start the project: Select src/main/java >> BookshelfAPiApplication.java. Run as Java Application.
+8. Test the API at [http://localhost:8080/books](http://localhost:8080/books)
