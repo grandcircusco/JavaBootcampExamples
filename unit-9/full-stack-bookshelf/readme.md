@@ -8,7 +8,7 @@ First, clone the repository to your computer if you have not already:
 The application consists of two parts. The Spring Boot API and the Angular front end (client) app. NOTE: Both must be running at the same time, so you might need two command line tabs.
 
 ### The API (bookshelf-api)
-You may start this from the command line or import and run it in Eclipse. From the command line you will not need to set up a MySQL Database because it uses an in-memory H2 database that come pre-loaded with sample data.
+You may start this Spring Boot API from the command line or import and run it in Eclipse. From the command line you will *not* need to set up a MySQL Database because it uses an in-memory H2 database that comes pre-loaded with sample data.
 
 To start the API from the command line:
 
