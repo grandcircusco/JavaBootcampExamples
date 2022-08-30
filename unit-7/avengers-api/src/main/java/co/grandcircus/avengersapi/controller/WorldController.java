@@ -16,58 +16,58 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import co.grandcircus.avengersapi.model.AvCharacter;
-import co.grandcircus.avengersapi.repository.CharacterRepository;
+import co.grandcircus.avengersapi.model.World;
+import co.grandcircus.avengersapi.repository.WorldRepository;
 
 @RestController
-public class CharacterController {
+public class WorldController {
 	@Autowired
-	private CharacterRepository characterRepo;
+	private WorldRepository worldRepo;
 	
 	// C(R)UD -- Read All
-	@GetMapping("/characters")
-	public List<AvCharacter> readAll(@RequestParam(required=false) String skill) {
+	@GetMapping("/worlds")
+	public List<World> readAll(@RequestParam(required=false) String skill) {
 		if (skill != null) {
-			return characterRepo.findBySkill(skill);
+			return worldRepo.findAll();
 		} else {
-			return characterRepo.findAll();
+			return worldRepo.findAll();
 		}
 	}
 	
 	// C(R)UD -- Read One
-	@GetMapping("/characters/{id}")
-	public AvCharacter readOne(@PathVariable("id") Long id) {
-		return characterRepo.findById(id).orElseThrow(() -> new CharacterNotFoundException(id) );
+	@GetMapping("/worlds/{id}")
+	public World readOne(@PathVariable("id") Long id) {
+		return worldRepo.findById(id).orElseThrow(() -> new WorldNotFoundException(id) );
 	}
 	
 	// (C)RUD -- Create
-	@PostMapping("/characters")
+	@PostMapping("/worlds")
 	@ResponseStatus(HttpStatus.CREATED)
-	public AvCharacter create(@RequestBody AvCharacter avchar) {
-		avchar.setId(null); // just to be safe... new entries should not have ID already set
-		characterRepo.save(avchar);
-		return avchar;
+	public World create(@RequestBody World world) {
+		world.setId(null); // just to be safe... new entries should not have ID already set
+		worldRepo.save(world);
+		return world;
 	}
 	
 	// CRU(D) -- Delete
-	@DeleteMapping("/characters/{id}")
+	@DeleteMapping("/worlds/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable("id") Long id) {
-		characterRepo.deleteById(id);
+		worldRepo.deleteById(id);
 	}
 	
 	// CR(U)D -- Update
-	@PutMapping("/characters/{id}")
-	public AvCharacter update(@PathVariable("id") Long id,
-			@RequestBody AvCharacter avchar) {
-		avchar.setId(id);
-		return characterRepo.save(avchar);
+	@PutMapping("/worlds/{id}")
+	public World update(@PathVariable("id") Long id,
+			@RequestBody World world) {
+		world.setId(id);
+		return worldRepo.save(world);
 	}
 	
 	@ResponseBody
-	@ExceptionHandler(CharacterNotFoundException.class)
+	@ExceptionHandler(WorldNotFoundException.class)
 	@ResponseStatus(HttpStatus.NOT_FOUND)
-	String characterNotFoundHandler(CharacterNotFoundException ex) {
+	String worldNotFoundHandler(WorldNotFoundException ex) {
 		return ex.getMessage();
 	}	
 }

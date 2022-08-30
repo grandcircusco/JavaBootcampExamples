@@ -11,5 +11,5 @@
 5. Finish the import.
 6. Add `src/main/resources/config/application.properties` and add connection info for your own MySQL schema.
 7. Start the project: Select src/main/java >> AvengersApiApplication.java. Run as Java Application.
-8. Browse to [http://localhost:8080/reset](http://localhost:8080/reset) to fill the database with sample data.
-9. Browse to [http://localhost:8080/characters](http://localhost:8080/characters)
+8. Browse to [http://localhost:8080/characters](http://localhost:8080/characters)
+9. Browse to [http://localhost:8080/reset](http://localhost:8080/reset) at any time to restore the database tables with the original data.
