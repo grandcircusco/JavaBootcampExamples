@@ -60,19 +60,22 @@ public class HomeController {
 		AvCharacter ac = new AvCharacter("Iron Man", 8, true, "flying", ironMan.getId(), earth);
 		characterRepo.save(ac);
 		
+		ac = new AvCharacter("Hulk", 10, true, "strength", incredibleHulk.getId(), earth);
+		characterRepo.save(ac);
+		
 		ac = new AvCharacter("Thor", 9, true, "fighting", thor.getId(), asgard);
 		characterRepo.save(ac);
 		
-		ac = new AvCharacter("Hulk", 10, true, "strength", incredibleHulk.getId(), earth);
+		ac = new AvCharacter("Hawkeye", 5, true, "bowmanship", thor.getId(), earth);
+		characterRepo.save(ac);
+		
+		ac = new AvCharacter("Thanos", 9, false, "strength", avengers.getId(), titan);
 		characterRepo.save(ac);
 		
 		ac = new AvCharacter("Black Panther", 8, true, "stealth", civilWar.getId(), earth);
 		characterRepo.save(ac);
 
 		ac = new AvCharacter("Dr. Strange", 7, true, "magic", doctorStrange.getId(), earth);
-		characterRepo.save(ac);
-		
-		ac = new AvCharacter("Thanos", 9, false, "strength", avengers.getId(), titan);
 		characterRepo.save(ac);
 		
 		return "Data reset.";

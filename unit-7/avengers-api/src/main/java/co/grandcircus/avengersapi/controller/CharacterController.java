@@ -26,9 +26,19 @@ public class CharacterController {
 	
 	// C(R)UD -- Read All
 	@GetMapping("/characters")
-	public List<AvCharacter> readAll(@RequestParam(required=false) String skill) {
-		if (skill != null) {
+	public List<AvCharacter> readAll(
+			@RequestParam(required = false) String name,
+			@RequestParam(required = false) String skill,
+			@RequestParam(required = false) Long firstMovieId,
+			@RequestParam(required = false) Long homeWorldId) {
+		if (name != null && !name.isBlank()) {
+			return characterRepo.findByNameContainsIgnoringCase(name);
+		} else if (skill != null && !skill.isBlank()) {
 			return characterRepo.findBySkill(skill);
+		} else if (firstMovieId != null) {
+			return characterRepo.findByFirstMovieId(firstMovieId);
+		} else if (homeWorldId != null) {
+			return characterRepo.findByHomeWorldId(homeWorldId);
 		} else {
 			return characterRepo.findAll();
 		}
