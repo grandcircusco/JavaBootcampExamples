@@ -38,9 +38,9 @@ export class BookshelfService {
   // Use the various HTTP methods as needed.
   // All of these still return an observable. We must subscribe in the component in
   // order to trigger the actual API call.
-  updateBook(id: number, updatedBook: Book): Observable<Book> {
+  updateBook(updatedBook: Book): Observable<Book> {
     // For PUT, pass the body data as a second parameter after the URL
-    return this.http.put<Book>(`${this.baseURL}/${id}`, updatedBook);
+    return this.http.put<Book>(`${this.baseURL}/${updatedBook.id}`, updatedBook);
   };
   addBook(newBook: Book): Observable<Book> {
     // For POST, pass the body data as a second parameter after the URL

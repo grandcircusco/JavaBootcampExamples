@@ -51,7 +51,7 @@ export class ListOfBooksComponent implements OnInit {
     const updatedBook = { ...book };
     updatedBook.lentOut = !book.lentOut;
     this.bookshelfService
-      .updateBook(book.id!, updatedBook)
+      .updateBook(updatedBook)
       .subscribe(() => this.loadBooks());
   };
 
