@@ -1,13 +1,14 @@
 -- Data for H2 Database, if the app is set up with H2.
 INSERT INTO bookshelf2_user (username, display_name) VALUES
-('bill', 'Bill Gates'),
-('steve', 'Steve Jobs'),
-('linus', 'Linus Torvalds');
+('orville', 'Orville Wright'),
+('amelia', 'Amelia Earhart'),
+('bessie', 'Bessie Coleman'),
+('charles', 'Charles Lindbergh');
 
 INSERT INTO bookshelf2_book (title, author, pages, lent_out, owner_id, lent_out_to_id) VALUES
 ('Pride and Prejudice', 'Jane Austen', 432, false, 1, NULL),
 ('To Kill a Mockingbird', 'Harper Lee', 281, true, 1, 2),
-('One Hundred Years of Solitude', 'Gabriel García Márquez', 448, false, 1, NULL),
+('One Hundred Years of Solitude', 'Gabriel García Márquez', 448, true, 1, 4),
 ('In Cold Blood', 'Truman Capote', 368, false, 1, NULL),
 ('The Adventures of Tom Sawyer', 'Mark Twain', 308, true, 1, 3),
 ('The Adventures of Huckleberry Finn', 'Mark Twain', 366, false, 1, NULL),

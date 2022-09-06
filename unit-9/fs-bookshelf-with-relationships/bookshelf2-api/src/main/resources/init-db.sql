@@ -23,9 +23,10 @@ CREATE TABLE `bookshelf2_book` (
 
 
 INSERT INTO bookshelf2_user (username, display_name) VALUES
-('bill', 'Bill Gates'),
-('steve', 'Steve Jobs'),
-('linus', 'Linus Torvalds');
+('orville', 'Orville Wright'),
+('amelia', 'Amelia Earhart'),
+('bessie', 'Bessie Coleman'),
+('charles', 'Charles Lindbergh');
 
 INSERT INTO bookshelf2_book (title, author, pages, lent_out, owner_id, lent_out_to_id) VALUES
 ('Pride and Prejudice', 'Jane Austen', 432, false, 1, NULL),
@@ -37,4 +38,4 @@ INSERT INTO bookshelf2_book (title, author, pages, lent_out, owner_id, lent_out_
 ('The Great Gatsby', 'F. Scott Fitzgerald', 366, false, 2, NULL),
 ('Crime and Punishment', 'Fyodor Dostoevsky', 366, true, 2, 1),
 ('In Cold Blood', 'Truman Capote', 366, true, 2, 3),
-('Brave New World', 'Aldous Huxley', 366, false, 2, NULL);
+('Brave New World', 'Aldous Huxley', 366, true, 2, 4);
