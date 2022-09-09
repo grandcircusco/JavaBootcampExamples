@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
-import Book from "./interfaces/Book";
+import Book from "../interfaces/Book";
 
 @Injectable({
   providedIn: "root",
@@ -15,12 +15,23 @@ export class BookshelfService {
   getAllBooks(): Observable<Book[]> {
     return this.http.get<Book[]>(`${this.baseURL}`);
   };
+  getBooksByOwner(ownerId: number): Observable<Book[]> {
+    return this.http.get<Book[]>(`${this.baseURL}`, {
+      params: {ownerId: ownerId}
+    });
+  };
+  getBooksByLentTo(lentOutToId: number): Observable<Book[]> {
+    return this.http.get<Book[]>(`${this.baseURL}`, {
+      params: {lentOutToId: lentOutToId}
+    });
+  };
   searchBooks(
+    ownerId: number,
     query: string,
     lentOut: boolean | null
   ): Observable<Book[]> {
     // Add URL query parameters to an object. HttpClient will add them to the URL safely.
-    const params: any = {};
+    const params: any = { ownerId: ownerId };
     if (query) {
       params.q = query;
     }

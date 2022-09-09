@@ -1,0 +1,20 @@
+<h2>Bookshelf of {{user.displayName}}</h2>
+<div class="library">
+  <h3>Books they own:</h3>
+  <ul>
+    <app-book
+      *ngFor="let book of books; index as i"
+      [book]="book"
+    ></app-book>
+  </ul>
+</div>
+
+<div class="library">
+  <h3>Books they are borrowing:</h3>
+  <ul>
+    <app-book
+      *ngFor="let book of borrowedBooks; index as i"
+      [book]="book"
+    ></app-book>
+  </ul>
+</div>

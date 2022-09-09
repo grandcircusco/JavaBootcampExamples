@@ -1,82 +1,61 @@
 package co.grandcircus.avengersapi.controller;
 
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
 import co.grandcircus.avengersapi.model.AvCharacter;
 import co.grandcircus.avengersapi.repository.CharacterRepository;
 
-import org.springframework.http.HttpStatus;
-
 @RestController
 public class CharacterController {
 	@Autowired
-	private CharacterRepository ch_repo;
-	
-	// Status response for root URL path
-	@RequestMapping("/")
-	public Map<String, Object> home() {
-		Map<String, Object> result = new LinkedHashMap<>();
-		result.put("status", "OK");
-		result.put("collections", new String[] { "/characters" });
-		return result;
-	}	
-	
-	@GetMapping("/reset")
-	public String reset() {
-		
-		// Delete all
-		ch_repo.deleteAll();
-		
-		// Add characters
-		
-		AvCharacter ac = new AvCharacter("Iron Man",8,true,"flying");
-		ch_repo.save(ac);
-		
-		ac = new AvCharacter("Thor",9,true, "fighting");
-		ch_repo.save(ac);
-		
-		ac = new AvCharacter("Hulk",10,true,"strength");
-		ch_repo.save(ac);
-		
-		ac = new AvCharacter("Black Panther",8, true,"stealth");
-		ch_repo.save(ac);
-
-		ac = new AvCharacter("Dr. Strange",7,true, "magic");
-		ch_repo.save(ac);
-		
-		ac = new AvCharacter("Thanos",9,false,"strength");
-		ch_repo.save(ac);
-		
-		return "Data reset.";
-
-	}
+	private CharacterRepository characterRepo;
 	
 	// C(R)UD -- Read All
 	@GetMapping("/characters")
-	public List<AvCharacter> readAll(@RequestParam(required=false) String skill) {
-		if (skill != null) {
-			return ch_repo.findBySkill(skill);
+	public List<AvCharacter> readAll(
+			@RequestParam(required = false) String name,
+			@RequestParam(required = false) String skill,
+			@RequestParam(required = false) Long firstMovieId,
+			@RequestParam(required = false) Long homeWorldId) {
+		if (name != null && !name.isBlank()) {
+			return characterRepo.findByNameContainsIgnoringCase(name);
+		} else if (skill != null && !skill.isBlank()) {
+			return characterRepo.findBySkill(skill);
+		} else if (firstMovieId != null) {
+			return characterRepo.findByFirstMovieId(firstMovieId);
+		} else if (homeWorldId != null) {
+			return characterRepo.findByHomeWorldId(homeWorldId);
 		} else {
-			return ch_repo.findAll();
+			return characterRepo.findAll();
 		}
 	}
 	
 	// C(R)UD -- Read One
 	@GetMapping("/characters/{id}")
 	public AvCharacter readOne(@PathVariable("id") Long id) {
-		return ch_repo.findById(id).orElseThrow(() -> new CharacterNotFoundException(id) );
+		return characterRepo.findById(id).orElseThrow(() -> new CharacterNotFoundException(id) );
 	}
 	
 	// (C)RUD -- Create
 	@PostMapping("/characters")
 	@ResponseStatus(HttpStatus.CREATED)
 	public AvCharacter create(@RequestBody AvCharacter avchar) {
-		ch_repo.save(avchar);
+		avchar.setId(null); // just to be safe... new entries should not have ID already set
+		characterRepo.save(avchar);
 		return avchar;
 	}
 	
@@ -84,7 +63,7 @@ public class CharacterController {
 	@DeleteMapping("/characters/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable("id") Long id) {
-		ch_repo.deleteById(id);
+		characterRepo.deleteById(id);
 	}
 	
 	// CR(U)D -- Update
@@ -92,7 +71,7 @@ public class CharacterController {
 	public AvCharacter update(@PathVariable("id") Long id,
 			@RequestBody AvCharacter avchar) {
 		avchar.setId(id);
-		return ch_repo.save(avchar);
+		return characterRepo.save(avchar);
 	}
 	
 	@ResponseBody

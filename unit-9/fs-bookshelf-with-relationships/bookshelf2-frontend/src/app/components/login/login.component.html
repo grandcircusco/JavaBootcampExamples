@@ -1,0 +1,21 @@
+<form (ngSubmit)="login()">
+  <h2>Login</h2>
+  <p *ngIf="message" class="message">{{message}}</p>
+  <p>
+    <label for="username">Username:</label>
+    <input type="text" name="username" id="username" [(ngModel)]="username" />
+  </p>
+  <p>
+    <label for="password">Password:</label>
+    <input type="password" name="password" id="password" [(ngModel)]="password" />
+    (For this demo app, password is not actually used.)
+  </p>
+  <p>
+    <button>Log In</button>
+  </p>
+</form>
+
+<h3>Hint: Here are the valid usernames...</h3>
+<p>
+  <span *ngFor="let user of demoUsers">{{user.username}}, </span>
+</p>

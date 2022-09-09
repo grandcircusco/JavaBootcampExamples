@@ -1,0 +1,24 @@
+<h2>My Books</h2>
+<app-search-books-form
+  (searchBookshelf)="setFilters($event)"
+></app-search-books-form>
+
+<app-add-book-form
+  (addBookToShelf)="addBookToShelf($event)"
+></app-add-book-form>
+
+<div class="library">
+  <h3 *ngIf="!hasFilters()">Books:</h3>
+  <h3 *ngIf="hasFilters()">Search Results:</h3>
+  <button *ngIf="hasFilters()" (click)="clearFilters()">Clear Filters</button>
+
+  <ul>
+    <app-book
+      *ngFor="let book of books; index as i"
+      [book]="book"
+      [showActions]="true"
+      (updateBook)="updateLentOut($event)"
+      (removeBookFromShelf)="removeBookFromShelf($event)"
+    ></app-book>
+  </ul>
+</div>
