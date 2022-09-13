@@ -6,7 +6,7 @@ import Book from "../interfaces/Book";
 @Injectable({
   providedIn: "root",
 })
-export class BookshelfService {
+export class BookService {
   // The base URL points to our Java Spring Boot backend on port 8080.
   baseURL: string = "http://localhost:8080/books";
 
@@ -15,11 +15,13 @@ export class BookshelfService {
   getAllBooks(): Observable<Book[]> {
     return this.http.get<Book[]>(`${this.baseURL}`);
   };
+  // GET /books?ownerId=...
   getBooksByOwner(ownerId: number): Observable<Book[]> {
     return this.http.get<Book[]>(`${this.baseURL}`, {
       params: {ownerId: ownerId}
     });
   };
+  // GET /books?lentOutToId=...
   getBooksByLentTo(lentOutToId: number): Observable<Book[]> {
     return this.http.get<Book[]>(`${this.baseURL}`, {
       params: {lentOutToId: lentOutToId}

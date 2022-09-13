@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import Book from 'src/app/interfaces/Book';
 import { User } from 'src/app/interfaces/User';
-import { BookshelfService } from 'src/app/services/bookshelf.service';
+import { BookService } from 'src/app/services/book.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -19,7 +19,7 @@ export class UserComponent implements OnInit {
   books: Book[] = [];
   borrowedBooks: Book[] = [];
 
-  constructor(private userService: UserService, private bookshelfService: BookshelfService, private route:ActivatedRoute) { }
+  constructor(private userService: UserService, private bookService: BookService, private route:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -27,10 +27,10 @@ export class UserComponent implements OnInit {
       this.userService.getUserById(userId).subscribe(user => {
         this.user = user;
       });
-      this.bookshelfService.getBooksByOwner(userId).subscribe(books => {
+      this.bookService.getBooksByOwner(userId).subscribe(books => {
         this.books = books;
       });
-      this.bookshelfService.getBooksByLentTo(userId).subscribe(books => {
+      this.bookService.getBooksByLentTo(userId).subscribe(books => {
         this.borrowedBooks = books;
       });
     });

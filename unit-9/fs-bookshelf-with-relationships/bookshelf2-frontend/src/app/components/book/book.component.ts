@@ -24,7 +24,7 @@ export class BookComponent implements OnInit {
 
   toggleLentOut = (): void => {
     if (this.book?.lentOut) {
-      const updatedBook = { ...this.book, lentOut: false };
+      const updatedBook = { ...this.book, lentOut: false, lentOutTo: null };
       this.updateBook.emit(updatedBook);
     } else {
       this.updating = true;
@@ -36,7 +36,16 @@ export class BookComponent implements OnInit {
 
   saveUpdate = ():void => {
     const selectedUserId = parseInt(this.formLentToId);
-    const selectedUser = this.lendableUsers.find(user => user.id === selectedUserId);
+    let selectedUser: User | null = null;
+    if (selectedUserId) {
+      selectedUser = {
+        id: selectedUserId,
+        username: "", // It's okay to use dummy data here, only the id matters when saving to API.
+        displayName: ""
+      };
+    }
+    // NOTE: An alternative would be to find the actual user object based on the id.
+    // const selectedUser = this.lendableUsers.find(user => user.id === selectedUserId);
     
     const updatedBook: Book = { ...this.book!, lentOut: true, lentOutTo: selectedUser ?? null };
     this.updateBook.emit(updatedBook);
