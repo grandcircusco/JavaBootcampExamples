@@ -15,11 +15,13 @@ export class BookService {
   getAllBooks(): Observable<Book[]> {
     return this.http.get<Book[]>(`${this.baseURL}`);
   };
+  // GET /books?ownerId=...
   getBooksByOwner(ownerId: number): Observable<Book[]> {
     return this.http.get<Book[]>(`${this.baseURL}`, {
       params: {ownerId: ownerId}
     });
   };
+  // GET /books?lentOutToId=...
   getBooksByLentTo(lentOutToId: number): Observable<Book[]> {
     return this.http.get<Book[]>(`${this.baseURL}`, {
       params: {lentOutToId: lentOutToId}
