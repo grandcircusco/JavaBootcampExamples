@@ -6,7 +6,7 @@ import Book from "../interfaces/Book";
 @Injectable({
   providedIn: "root",
 })
-export class BookshelfService {
+export class BookService {
   // The base URL points to our Java Spring Boot backend on port 8080.
   baseURL: string = "http://localhost:8080/books";
 
