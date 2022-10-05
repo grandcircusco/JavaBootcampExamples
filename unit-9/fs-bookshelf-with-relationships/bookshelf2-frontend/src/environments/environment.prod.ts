@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiDomain: "http://localhost:8080"
+  apiBaseUrl: "https://xxx.cloudfront.net"
 };

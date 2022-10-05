@@ -10,7 +10,7 @@ import { environment } from "src/environments/environment";
 export class UserService {
   // The base URL points to our Java Spring Boot backend.
   // This is set in environment.ts. It could be localhost or it could be deployed on AWS.
-  baseURL: string = environment.apiDomain + "/users";
+  baseURL: string = environment.apiBaseUrl + "/users";
 
   constructor(private http: HttpClient) {}
 

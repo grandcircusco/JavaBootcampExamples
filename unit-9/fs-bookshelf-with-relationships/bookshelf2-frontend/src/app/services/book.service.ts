@@ -10,7 +10,7 @@ import { environment } from "src/environments/environment";
 export class BookService {
   // The base URL points to our Java Spring Boot backend.
   // This is set in environment.ts. It could be localhost or it could be deployed on AWS.
-  baseURL: string = environment.apiDomain + "/books";
+  baseURL: string = environment.apiBaseUrl + "/books";
 
   constructor(private http: HttpClient) {}
 
