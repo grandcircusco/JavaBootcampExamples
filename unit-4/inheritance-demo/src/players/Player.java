@@ -29,4 +29,9 @@ public class Player {
     return name + " wears " + jersey;
   }
 
+  @Override
+  public String toString() {
+    return "Player [name=" + name + ", jersey=" + jersey + "]";
+  }
+
 }

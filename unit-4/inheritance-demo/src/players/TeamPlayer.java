@@ -21,4 +21,9 @@ public class TeamPlayer extends Player {
     return super.describe() + " and plays for " + team;
   }
 
+  @Override
+  public String toString() {
+    return "TeamPlayer [name=" + getName() + ", jersey=" + getJersey() + ", team=" + team + "]";
+  }
+
 }
