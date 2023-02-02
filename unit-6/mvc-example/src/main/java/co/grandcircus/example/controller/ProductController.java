@@ -3,6 +3,7 @@ package co.grandcircus.example.controller;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,7 +30,7 @@ public class ProductController {
 		if (cat == null || cat.isBlank()) {
 			myProducts = PRODUCTS;
 		} else {
-			myProducts = PRODUCTS.stream().filter(product -> product.getCategory().equals(cat)).toList();
+			myProducts = PRODUCTS.stream().filter(product -> product.getCategory().equals(cat)).collect(Collectors.toList());
 		}
 		model.addAttribute("products", myProducts);
 		return "product-list";
