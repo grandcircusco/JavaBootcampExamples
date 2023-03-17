@@ -10,7 +10,7 @@ You may start this Spring Boot API from the command line or import and run it in
 
 To start the API from the command line:
 
-1. CD into the `bookshelf-api` directory.
+1. CD into the `restaurant-faves-api` directory.
 2. Run: `./gradlew bootRun --args='--spring.profiles.active=h2'`
 
 Or to import and run it in Eclipse:
