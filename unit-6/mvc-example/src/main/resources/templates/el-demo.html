@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>EL Demo</title>
+</head>
+<body>
+	<h1>JSP &amp; Expression Language Demo</h1>
+
+	<h2>Simple EL</h2>
+	<h3 th:text="${title}"></h3>
+ 	<a th:href="${link}">Click Me</a>
+ 	
+ 	<h2>Dot Notation</h2>
+	<h3 th:inline="text">Room: [[${room}]]</h3>
+	<p th:inline="text">Length: [[${dimensions.length}]]</p>
+	<p th:inline="text">Width: [[${dimensions.width}]]</p>
+	
+	<h2>Loop</h2>
+	<ul th:each="pet: ${pets}">
+
+	    <li th:text="${pet}"></li>
+
+	</ul>
+	
+	<h2>If</h2>
+	<p>
+		<c:if test="${dayTime}">
+		  Good Day!
+		</c:if>
+		<c:if test="${not dayTime}">
+		  Good Night!
+		</c:if>
+	</p>
+	
+		<p th:if="${not #lists.isEmpty(bananas)}">
+		  We have bananas.
+		</p>
+		<p th:if="${#lists.isEmpty(bananas)}">
+		  We have no bananas!
+		</p>
+
+</body>
+</html>
