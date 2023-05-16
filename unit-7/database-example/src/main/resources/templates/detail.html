@@ -19,7 +19,7 @@
 			</tr>
 			<tr>
 				<th scope="row">Available</th>
-				<td th:text="${room.available == true ? 'Yes' : 'No'}"></td>
+				<td th:text="${room.available == true }? 'Yes' : 'No'"></td>
 			</tr>
 		</table>
 		<a class="btn btn-secondary" th:href="@{/rooms/edit?id={id}(id = ${room.id})}">Edit</a>

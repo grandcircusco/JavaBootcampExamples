@@ -35,7 +35,7 @@
 				<tr th:each="classroom: ${rooms}">
 					<td><a th:href="@{/rooms/detail?id={id}(id=${classroom.id})}" th:text="${classroom.name}"></a></td>
 					<td th:text="${classroom.maxCapacity}"></td>
-					<td th:text="${classroom.available == true ? 'Yes' : 'No'}">${classroom.available ? "Yes" : "No" }</td>
+					<td th:text="${classroom.available == true} ? 'Yes' : 'No'">${classroom.available ? "Yes" : "No" }</td>
 				</tr>
 				</c:forEach>
 			</tbody>
