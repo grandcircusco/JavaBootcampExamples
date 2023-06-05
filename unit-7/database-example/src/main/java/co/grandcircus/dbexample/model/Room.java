@@ -1,10 +1,11 @@
 package co.grandcircus.dbexample.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
 
 @Entity
 @Table(name = "rooms")
@@ -15,12 +16,12 @@ public class Room {
 	private Long id;
 	private String name;
 	private Integer maxCapacity;
-	private Boolean available;
+	private boolean available;
 
 	public Room() {
 	}
 
-	public Room(Long id, String name, Integer capacity, Boolean available) {
+	public Room(Long id, String name, Integer capacity, boolean available) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -52,11 +53,11 @@ public class Room {
 		this.maxCapacity = maxCapacity;
 	}
 
-	public Boolean getAvailable() {
+	public boolean getAvailable() {
 		return available;
 	}
 
-	public void setAvailable(Boolean available) {
+	public void setAvailable(boolean available) {
 		this.available = available;
 	}
 

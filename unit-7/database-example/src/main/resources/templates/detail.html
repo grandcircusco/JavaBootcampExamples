@@ -1,8 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Rooms</title>
@@ -14,19 +11,19 @@
 		<table class="table">
 			<tr>
 				<th scope="row">Name</th>
-				<td>${room.name}</td>
+				<td th:text="${room.name}"></td>
 			</tr>
 			<tr>
 				<th scope="row">Max Capacity</th>
-				<td>${room.maxCapacity}</td>
+				<td th:text="${room.maxCapacity}"></td>
 			</tr>
 			<tr>
 				<th scope="row">Available</th>
-				<td>${room.available ? "Yes" : "No"}</td>
+				<td th:text="${room.available == true }? 'Yes' : 'No'"></td>
 			</tr>
 		</table>
-		<a class="btn btn-secondary" href="/rooms/edit?id=${room.id}">Edit</a>
-		<a class="btn btn-danger" href="/rooms/delete?id=${room.id}">Delete</a>
+		<a class="btn btn-secondary" th:href="@{/rooms/edit?id={id}(id = ${room.id})}">Edit</a>
+		<a class="btn btn-danger" th:href="@{/rooms/delete?id={id}(id = ${room.id})}">Delete</a>
 		<a class="btn link" href="/rooms">Back to List</a>
 	</div>
 </body>
