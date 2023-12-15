@@ -1,31 +1,29 @@
-import { TestBed } from "@angular/core/testing";
-import { AppComponent } from "./app.component";
+import { TestBed } from '@angular/core/testing';
+import { AppComponent } from './app.component';
 
-describe("AppComponent", () => {
+describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AppComponent],
+      imports: [AppComponent],
     }).compileComponents();
   });
 
-  it("should create the app", () => {
+  it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'bookshelf-frontend'`, () => {
+  it(`should have the 'BookshelfFrontend' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual("bookshelf-frontend");
+    expect(app.title).toEqual('BookshelfFrontend');
   });
 
-  it("should render title", () => {
+  it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector(".content span")?.textContent).toContain(
-      "bookshelf-frontend app is running!"
-    );
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, BookshelfFrontend');
   });
 });

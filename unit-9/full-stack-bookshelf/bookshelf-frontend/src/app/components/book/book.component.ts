@@ -1,12 +1,14 @@
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
-import Book from "src/app/interfaces/Book";
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Book } from '../../interfaces/book';
 
 @Component({
-  selector: "app-book",
-  templateUrl: "./book.component.html",
-  styleUrls: ["./book.component.css"],
+  selector: 'app-book',
+  standalone: true,
+  imports: [],
+  templateUrl: './book.component.html',
+  styleUrl: './book.component.css'
 })
-export class BookComponent implements OnInit {
+export class BookComponent {
   @Input() book: Book | undefined;
   @Output() toggleLentOut = new EventEmitter<Book>();
   @Output() removeBookFromShelf = new EventEmitter<number>();

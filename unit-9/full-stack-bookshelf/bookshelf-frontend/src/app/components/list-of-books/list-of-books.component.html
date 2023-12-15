@@ -7,16 +7,20 @@
 ></app-add-book-form>
 
 <div class="library">
-  <h2 *ngIf="!hasFilters()">Books:</h2>
-  <h2 *ngIf="hasFilters()">Search Results:</h2>
-  <button *ngIf="hasFilters()" (click)="clearFilters()">Clear Filters</button>
-
-  <ul>
-    <app-book
-      *ngFor="let book of books; index as i"
-      [book]="book"
-      (toggleLentOut)="updateLentOut($event)"
-      (removeBookFromShelf)="removeBookFromShelf($event)"
-    ></app-book>
-  </ul>
-</div>
+    @if (!hasFilters()) {
+        <h2>Books:</h2>
+    } @else {
+        <h2>Search Results:</h2>
+        <button (click)="clearFilters()">Clear Filters</button>
+    }
+  
+    <ul>
+        @for (book of books; track $index) {
+            <app-book
+            [book]="book"
+            (toggleLentOut)="updateLentOut($event)"
+            (removeBookFromShelf)="removeBookFromShelf($event)"
+          ></app-book>
+        }
+    </ul>
+  </div>

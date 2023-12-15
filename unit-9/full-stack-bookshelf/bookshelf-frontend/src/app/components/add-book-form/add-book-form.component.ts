@@ -1,12 +1,15 @@
-import { Component, EventEmitter, OnInit, Output } from "@angular/core";
-import Book from "src/app/interfaces/Book";
+import { Component, EventEmitter, Output } from '@angular/core';
+import { Book } from '../../interfaces/book';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: "app-add-book-form",
-  templateUrl: "./add-book-form.component.html",
-  styleUrls: ["./add-book-form.component.css"],
+  selector: 'app-add-book-form',
+  standalone: true,
+  imports: [FormsModule],
+  templateUrl: './add-book-form.component.html',
+  styleUrl: './add-book-form.component.css'
 })
-export class AddBookFormComponent implements OnInit {
+export class AddBookFormComponent {
   @Output() addBookToShelf = new EventEmitter<Book>();
 
   title: string = "";

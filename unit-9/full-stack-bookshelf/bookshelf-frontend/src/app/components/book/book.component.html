@@ -1,12 +1,16 @@
 <li
   class="book"
-  [ngClass]="{ 'checked-out': book?.lentOut, available: !book?.lentOut }"
+  [class.checked-out]="book?.lentOut"
+  [class.available]="!book?.lentOut"
 >
   <p>"{{ book?.title }}" by: {{ book?.author }}</p>
   <p>({{ book?.pages }} pages)</p>
-  <p *ngIf="book?.lentOut" class="lent-out-message">
-    (Book is currently lent out)
-  </p>
+  @if (book?.lentOut) {
+    <p class="lent-out-message">
+        (Book is currently lent out)
+      </p>
+  }
+  
   <button (click)="updateBook()">
     {{ !book?.lentOut ? "Lend to a friend" : "Book has been returned" }}
   </button>

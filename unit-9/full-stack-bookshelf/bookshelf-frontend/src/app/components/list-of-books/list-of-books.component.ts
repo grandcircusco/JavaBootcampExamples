@@ -1,14 +1,19 @@
-import { Component, OnInit } from "@angular/core";
-import Book from "src/app/interfaces/Book";
-import SearchParams from "src/app/interfaces/SearchParams";
-import { BookshelfService } from "src/app/bookshelf.service";
+import { Component } from '@angular/core';
+import { Book } from '../../interfaces/book';
+import { SearchParams } from '../../interfaces/search-params';
+import { BookshelfService } from '../../services/bookshelf.service';
+import { BookComponent } from '../book/book.component';
+import { SearchBooksFormComponent } from '../search-books-form/search-books-form.component';
+import { AddBookFormComponent } from '../add-book-form/add-book-form.component';
 
 @Component({
-  selector: "app-list-of-books",
-  templateUrl: "./list-of-books.component.html",
-  styleUrls: ["./list-of-books.component.css"],
+  selector: 'app-list-of-books',
+  standalone: true,
+  imports: [BookComponent, SearchBooksFormComponent, AddBookFormComponent],
+  templateUrl: './list-of-books.component.html',
+  styleUrl: './list-of-books.component.css'
 })
-export class ListOfBooksComponent implements OnInit {
+export class ListOfBooksComponent {
   books: Book[] = [];
   filters: SearchParams = { query: "", lentOut: null}
   constructor(private bookshelfService: BookshelfService) {}
