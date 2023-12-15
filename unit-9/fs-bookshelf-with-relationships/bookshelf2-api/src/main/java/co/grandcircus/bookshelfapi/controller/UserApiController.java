@@ -21,7 +21,8 @@ import co.grandcircus.bookshelfapi.model.User;
 import co.grandcircus.bookshelfapi.repository.UserRepository;
 
 @RestController
-@CrossOrigin // Allow any website to access this API
+// Allow specific websites to access this API...
+@CrossOrigin(origins = { "http://localhost:4200", "https://mywebsite.com" })
 public class UserApiController {
 
 	@Autowired

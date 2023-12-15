@@ -24,7 +24,8 @@ import co.grandcircus.bookshelfapi.model.Book;
 import co.grandcircus.bookshelfapi.repository.BookRepository;
 
 @RestController
-@CrossOrigin // Allow any website to access this API
+// Allow specific websites to access this API...
+@CrossOrigin(origins = { "http://localhost:4200", "https://mywebsite.com" })
 public class BookApiController {
 
 	@Autowired
