@@ -1,4 +1,5 @@
-import { User } from "./User";
+import { User } from "./user";
+
 
 export default interface Book {
   // The id is marked as optional (?) because as we are creating new books, they

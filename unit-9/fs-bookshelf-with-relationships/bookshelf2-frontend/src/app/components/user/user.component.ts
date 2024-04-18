@@ -1,17 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import Book from 'src/app/interfaces/Book';
-import { User } from 'src/app/interfaces/User';
-import { BookService } from 'src/app/services/book.service';
-import { UserService } from 'src/app/services/user.service';
+import Book from '../../interfaces/book';
+import { User } from '../../interfaces/user';
+import { BookService } from '../../services/book.service';
+import { UserService } from '../../services/user.service';
+import { BookComponent } from '../book/book.component';
 
 @Component({
   selector: 'app-user',
+  standalone: true,
+  imports: [BookComponent],
   templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css']
+  styleUrl: './user.component.css'
 })
-export class UserComponent implements OnInit {
-
+export class UserComponent {
   user: User = {
     username: "",
     displayName: ""
@@ -35,5 +37,4 @@ export class UserComponent implements OnInit {
       });
     });
   }
-
 }
