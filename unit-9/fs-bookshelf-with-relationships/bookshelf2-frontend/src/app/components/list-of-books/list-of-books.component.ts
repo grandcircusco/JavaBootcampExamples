@@ -1,16 +1,21 @@
-import { Component, OnInit } from "@angular/core";
-import Book from "src/app/interfaces/Book";
-import SearchParams from "src/app/interfaces/SearchParams";
-import { AuthService } from "src/app/services/auth.service";
-import { BookService } from "src/app/services/book.service";
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import Book from '../../interfaces/book';
+import SearchParams from '../../interfaces/search-params';
+import { AuthService } from '../../services/auth.service';
+import { BookService } from '../../services/book.service';
+import { SearchBooksFormComponent } from '../search-books-form/search-books-form.component';
+import { AddBookFormComponent } from '../add-book-form/add-book-form.component';
+import { BookComponent } from '../book/book.component';
 
 @Component({
-  selector: "app-list-of-books",
-  templateUrl: "./list-of-books.component.html",
-  styleUrls: ["./list-of-books.component.css"],
+  selector: 'app-list-of-books',
+  standalone: true,
+  imports: [SearchBooksFormComponent, AddBookFormComponent, BookComponent],
+  templateUrl: './list-of-books.component.html',
+  styleUrl: './list-of-books.component.css'
 })
-export class ListOfBooksComponent implements OnInit {
+export class ListOfBooksComponent {
   books: Book[] = [];
   filters: SearchParams = { query: "", lentOut: null}
   constructor(private bookService: BookService, private authService: AuthService, private router: Router) {}

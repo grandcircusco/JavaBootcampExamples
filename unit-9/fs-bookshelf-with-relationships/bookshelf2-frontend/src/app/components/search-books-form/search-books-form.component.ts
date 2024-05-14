@@ -1,12 +1,15 @@
-import { Component, EventEmitter, OnInit, Output } from "@angular/core";
-import SearchParams from "src/app/interfaces/SearchParams";
+import { Component, EventEmitter, Output } from '@angular/core';
+import SearchParams from '../../interfaces/search-params';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: "app-search-books-form",
-  templateUrl: "./search-books-form.component.html",
-  styleUrls: ["./search-books-form.component.css"],
+  selector: 'app-search-books-form',
+  standalone: true,
+  imports: [FormsModule],
+  templateUrl: './search-books-form.component.html',
+  styleUrl: './search-books-form.component.css'
 })
-export class SearchBooksFormComponent implements OnInit {
+export class SearchBooksFormComponent {
   @Output() searchBookshelf = new EventEmitter<SearchParams>();
 
   query: string = "";

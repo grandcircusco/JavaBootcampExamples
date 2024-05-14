@@ -1,15 +1,18 @@
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
-import Book from "src/app/interfaces/Book";
-import { User } from "src/app/interfaces/User";
-import { AuthService } from "src/app/services/auth.service";
-import { UserService } from "src/app/services/user.service";
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import Book from '../../interfaces/book';
+import { User } from '../../interfaces/user';
+import { AuthService } from '../../services/auth.service';
+import { UserService } from '../../services/user.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: "app-book",
-  templateUrl: "./book.component.html",
-  styleUrls: ["./book.component.css"],
+  selector: 'app-book',
+  standalone: true,
+  imports: [FormsModule],
+  templateUrl: './book.component.html',
+  styleUrl: './book.component.css'
 })
-export class BookComponent implements OnInit {
+export class BookComponent {
   @Input() book: Book | undefined;
   @Input() showActions: boolean = false;
   @Output() updateBook = new EventEmitter<Book>();
@@ -49,6 +52,7 @@ export class BookComponent implements OnInit {
     
     const updatedBook: Book = { ...this.book!, lentOut: true, lentOutTo: selectedUser ?? null };
     this.updateBook.emit(updatedBook);
+    this.updating = false;
   }
 
   cancelUpdate = ():void => {
@@ -58,4 +62,5 @@ export class BookComponent implements OnInit {
   remove = (): void => {
     this.removeBookFromShelf.emit(this.book?.id);
   };
+
 }

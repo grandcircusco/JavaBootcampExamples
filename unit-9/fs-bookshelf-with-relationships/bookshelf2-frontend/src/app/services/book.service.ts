@@ -1,14 +1,15 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
-import Book from "../interfaces/Book";
-import { environment } from "src/environments/environment";
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import Book from '../interfaces/book';
+import { environment } from '../../environments/environment';
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root'
 })
 export class BookService {
-  // The base URL points to our Java Spring Boot backend.
+
+   // The base URL points to our Java Spring Boot backend.
   // This is set in environment.ts. It could be localhost or it could be deployed on AWS.
   baseURL: string = environment.apiBaseUrl + "/books";
 
