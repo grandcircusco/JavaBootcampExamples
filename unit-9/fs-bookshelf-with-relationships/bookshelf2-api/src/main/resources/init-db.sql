@@ -35,7 +35,7 @@ INSERT INTO bookshelf2_book (title, author, pages, lent_out, owner_id, lent_out_
 ('In Cold Blood', 'Truman Capote', 368, false, 1, NULL),
 ('The Adventures of Tom Sawyer', 'Mark Twain', 308, true, 1, 3),
 ('The Adventures of Huckleberry Finn', 'Mark Twain', 366, false, 1, NULL),
-('The Great Gatsby', 'F. Scott Fitzgerald', 366, false, 2, NULL),
-('Crime and Punishment', 'Fyodor Dostoevsky', 366, true, 2, 1),
-('In Cold Blood', 'Truman Capote', 366, true, 2, 3),
-('Brave New World', 'Aldous Huxley', 366, true, 2, 4);
+('The Great Gatsby', 'F. Scott Fitzgerald', 192, false, 2, NULL),
+('Crime and Punishment', 'Fyodor Dostoevsky', 492, true, 2, 1),
+('In Cold Blood', 'Truman Capote', 368, true, 2, 3),
+('Brave New World', 'Aldous Huxley', 288, false, 2, NULL);
